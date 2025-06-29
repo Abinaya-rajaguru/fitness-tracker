@@ -99,3 +99,9 @@ export type WorkoutForm = {
   duration_minutes: number;
   calories_burned: number;
 };
+
+export type WorkoutSummary = {
+  total_workouts: number;
+  total_duration: number;
+  total_calories: string; // formatted string like "2340 kcal"
+};
