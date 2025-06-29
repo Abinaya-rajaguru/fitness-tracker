@@ -12,21 +12,27 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
+        fitness: {
+          primary: '#16a34a', // green-600
+          secondary: '#4ade80', // green-400
+          dark: '#065f46', // green-800
+        },
         blue: {
           400: '#2589FE',
           500: '#0070F3',
           600: '#2F6FEB',
         },
       },
-    },
-    keyframes: {
-      shimmer: {
-        '100%': {
-          transform: 'translateX(100%)',
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
         },
       },
     },
   },
   plugins: [require('@tailwindcss/forms')],
 };
+
 export default config;

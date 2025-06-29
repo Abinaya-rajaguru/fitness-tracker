@@ -1,7 +1,6 @@
-// This file contains type definitions for your data.
-// It describes the shape of the data, and what data type each property should accept.
-// For simplicity of teaching, we're manually defining these types.
-// However, these types are generated automatically if you're using an ORM such as Prisma.
+// /app/lib/definitions.ts
+
+// Admin or system-level user (optional)
 export type User = {
   id: string;
   name: string;
@@ -9,80 +8,94 @@ export type User = {
   password: string;
 };
 
-export type Customer = {
+// App users — people who log their workouts
+export type FitnessUser = {
   id: string;
   name: string;
   email: string;
   image_url: string;
 };
 
-export type Invoice = {
+// A single workout entry
+export type Workout = {
   id: string;
-  customer_id: string;
-  amount: number;
+  user_id: string;
+  type: string; // e.g., 'Running', 'Yoga'
+  duration_minutes: number;
+  calories_burned: number;
   date: string;
-  // In TypeScript, this is called a string union type.
-  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
-  status: 'pending' | 'paid';
 };
 
-export type Revenue = {
+// Monthly calorie trends
+export type CaloriesByMonth = {
   month: string;
-  revenue: number;
+  calories: number;
 };
 
-export type LatestInvoice = {
+// For latest workouts shown in UI
+export type LatestWorkout = {
   id: string;
-  name: string;
-  image_url: string;
-  email: string;
-  amount: string;
-};
-
-// The database returns a number for amount, but we later format it to a string with the formatCurrency function
-export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
-  amount: number;
-};
-
-export type InvoicesTable = {
-  id: string;
-  customer_id: string;
   name: string;
   email: string;
   image_url: string;
+  type: string;
+  duration: string;
+  calories: string;
   date: string;
-  amount: number;
-  status: 'pending' | 'paid';
 };
 
-export type CustomersTableType = {
+// Raw data before formatting (e.g., duration or calories as numbers)
+export type LatestWorkoutRaw = Omit<LatestWorkout, 'duration' | 'calories'> & {
+  duration: number;
+  calories: number;
+};
+
+// For the table UI combining workouts + user info
+export type WorkoutsTable = {
+  id: string;
+  user_id: string;
+  name: string;
+  email: string;
+  image_url: string;
+  type: string;
+  duration_minutes: number;
+  calories_burned: number;
+  date: string;
+};
+
+// Stats summary per user (like invoices per customer before)
+export type FitnessUserStats = {
   id: string;
   name: string;
   email: string;
   image_url: string;
-  total_invoices: number;
-  total_pending: number;
-  total_paid: number;
+  total_workouts: number;
+  total_duration: number;
+  total_calories: number;
 };
 
-export type FormattedCustomersTable = {
+// Same as above, but duration/calories formatted as strings for UI
+export type FormattedFitnessUserStats = {
   id: string;
   name: string;
   email: string;
   image_url: string;
-  total_invoices: number;
-  total_pending: string;
-  total_paid: string;
+  total_workouts: number;
+  total_duration: string;
+  total_calories: string;
 };
 
-export type CustomerField = {
+// Select dropdown or filter type
+export type FitnessUserField = {
   id: string;
   name: string;
 };
 
-export type InvoiceForm = {
+// Form to create/edit a workout log
+export type WorkoutForm = {
   id: string;
-  customer_id: string;
-  amount: number;
-  status: 'pending' | 'paid';
+  user_id: string;
+  type: string;
+  duration_minutes: number;
+  calories_burned: number;
 };
