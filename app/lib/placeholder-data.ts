@@ -155,4 +155,51 @@ const caloriesBurnedByMonth = [
   { month: 'Dec', calories: 5000 },
 ];
 
-export { users, fitnessUsers, workouts, caloriesBurnedByMonth };
+const invoices = [
+  {
+    id: 'inv-001',
+    customer_id: 'cust-001',
+    amount: 120,
+    status: 'paid',
+    date: '2024-06-01',
+  },
+  {
+    id: 'inv-002',
+    customer_id: 'cust-002',
+    amount: 150,
+    status: 'pending',
+    date: '2024-06-15',
+  },
+];
+
+const customers = [
+  {
+    id: 'cust-001',
+    name: 'Alex Johnson',
+    email: 'alex@fitness.com',
+  },
+  {
+    id: 'cust-002',
+    name: 'Sarah Lee',
+    email: 'sarah@fitness.com',
+  },
+];
+
+const revenue = [
+  { month: 'Jan', revenue: 5200 },
+  { month: 'Feb', revenue: 4800 },
+  { month: 'Mar', revenue: 5600 },
+  { month: 'Apr', revenue: 5900 },
+  { month: 'May', revenue: 6200 },
+  { month: 'Jun', revenue: 6500 },
+];
+
+export {
+  users,
+  fitnessUsers,
+  workouts,
+  caloriesBurnedByMonth,
+  invoices,
+  customers,
+  revenue,
+};
